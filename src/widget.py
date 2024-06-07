@@ -11,6 +11,3 @@ def mask_account_card(string: str) -> Any:
     else:
         cardnumber = "".join(string[-16:].split())
         return string[:-16] + masks.mask_card_number(cardnumber)
-
-
-
