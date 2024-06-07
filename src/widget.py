@@ -13,4 +13,4 @@ def mask_account_card(string: str) -> Any:
         return string[:-16] + masks.mask_card_number(cardnumber)
 
 
-print(mask_account_card("Счет 35383033474447895560"))
+

@@ -7,4 +7,3 @@ def get_data(date_str: str) -> str:
     format_date= no_format_date.strftime("%d.%m.%Y")
     print(no_format_date)
     return format_date
-print(get_data('2018-07-31T02:26:18.671407'))
