@@ -11,9 +11,9 @@ def filter_by_state(list_of_operations: list[dict], state: str = "EXECUTED") -> 
     return list_of_selected_operations
 
 
-def sort_by_date(list_of_operations: Iterable, order: bool = True) -> list[dict]:
-    """Функция фильтрации по дате"""
+def sort_by_date(list_of_operations: Iterable, ascending: bool = True) -> list[dict]:
+    """Функция сортировки по дате"""
     sorted_operations = sorted(
-        list_of_operations, key=lambda list_of_operations: list_of_operations.get("date"), reverse=order
+        list_of_operations, key=lambda list_of_operations: list_of_operations.get("date"), reverse=ascending
     )
     return sorted_operations
