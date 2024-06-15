@@ -1,5 +1,7 @@
 def mask_card_number(cardnumber: str) -> str:
     """Функция, маскирующая номер карты"""
+    # if len(cardnumber) != 16:
+    #     raise ValueError()
     masked_cardnumber_list = []
     masked_cardnumber = cardnumber[:-10] + "******" + cardnumber[-4:]
 
