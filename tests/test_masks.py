@@ -1,10 +1,14 @@
-from src.masks import mask_card_number, mask_account
 import pytest
+
+
+from src.masks import mask_card_number, mask_account
 
 
 @pytest.fixture
 def my_string():
     return '1234567812345678'
+
+
 def test_mask_card_number(my_string):
     assert mask_card_number(my_string) == '1234 56** **** 5678'
 
