@@ -1,4 +1,4 @@
-def log(filename = None):
+def log(filename=None):
     def decorator(func):
         def wrapper(*args, **kwargs):
             try:
@@ -15,11 +15,8 @@ def log(filename = None):
                         log_file.write(f'{func.__name__} error: {e}. Inputs: {args}, {kwargs}"\n')
                 else:
                     print(f"{func.__name__} error: {e}. Inputs: {args}, {kwargs}\n")
+
         return wrapper
+
     return decorator
 
-@log(filename="log_file.txt")
-# @log
-def my_function(x, y):
-    return x + y
-print(my_function("1", "3"))
