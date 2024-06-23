@@ -4,19 +4,28 @@ def log(filename=None):
             try:
                 result = func(*args, **kwargs)
                 if filename:
-                    with open(filename, 'a') as log_file:
+                    with open(filename, "a") as log_file:
                         log_file.write(f"{func.__name__} ok\n")
                 else:
                     print(f"{func.__name__} ok")
                 return result
             except Exception as e:
                 if filename:
-                    with open(filename, 'a') as log_file:
-                        log_file.write(f'{func.__name__} error: {e}. Inputs: {args}, {kwargs}"\n')
+                    with open(filename, "a") as log_file:
+                        log_file.write(f"{func.__name__} error: {type(e).__name__}. Inputs: {args}, {kwargs}\n")
                 else:
-                    print(f"{func.__name__} error: {e}. Inputs: {args}, {kwargs}\n")
+                    print(f"{func.__name__} error: {type(e).__name__}. Inputs: {args}, {kwargs}\n")
+                raise e
 
         return wrapper
 
     return decorator
 
+
+# @log(filename="mylog11.txt")
+# def my_function(x, y):
+#     return x / y
+#
+#
+# result = my_function(1, 0)
+# print(result)
