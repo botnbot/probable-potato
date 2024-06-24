@@ -1,6 +1,9 @@
-def log(filename=None):
-    def decorator(func):
-        def wrapper(*args, **kwargs):
+# from  pathlib import Path
+# from src.config import ROOT_PATH
+from typing import Any
+def log(filename: Any = None) -> Any:
+    def decorator(func: Any) -> Any:
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
                 result = func(*args, **kwargs)
                 if filename:
@@ -15,17 +18,18 @@ def log(filename=None):
                         log_file.write(f"{func.__name__} error: {type(e).__name__}. Inputs: {args}, {kwargs}\n")
                 else:
                     print(f"{func.__name__} error: {type(e).__name__}. Inputs: {args}, {kwargs}\n")
-                raise e
+                raise
 
         return wrapper
 
     return decorator
 
 
-# @log(filename="mylog11.txt")
-# def my_function(x, y):
-#     return x / y
+# print(f"ROOT_PATH is set to: {ROOT_PATH}")
 #
-#
-# result = my_function(1, 0)
-# print(result)
+@log(filename="test.log")
+def my_function(x, y):
+    return x / y
+
+result = my_function(4, 2)
+print(result)
