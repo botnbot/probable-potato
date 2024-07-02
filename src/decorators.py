@@ -1,4 +1,4 @@
-from src.config import ROOT_PATH
+from data.config import ROOT_PATH
 from pathlib import Path
 
 

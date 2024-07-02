@@ -1,12 +1,12 @@
 import pytest
 from src.decorators import log
-from src.config import ROOT_PATH
+from data.config import ROOT_PATH
 from pathlib import Path
 
 
-@log(filename="../src/log_file.txt")
+@log(filename=Path(ROOT_PATH, "../src/log_file.txt"))
 def divide(a, b):
-    '''Тстовая функция, которую будем использовать в тестах декоратора'''
+    '''Тестовая функция, которую будем использовать в тестах декоратора'''
     return a / b
 
 
