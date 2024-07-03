@@ -23,4 +23,4 @@ def json_to_list(path_to_file: str) -> Any:
         return []
 
 
-print(json_to_list("data\\operations22.json"))
+# print(json_to_list("data\\operations22.json"))
