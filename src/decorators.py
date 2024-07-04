@@ -1,11 +1,12 @@
-from data.config import ROOT_PATH
+from src.config import ROOT_PATH
 from pathlib import Path
 
 
 def log(filename=None):
-    '''Декоратор для логирования функции
-       Аргумент функции - путь для сохранения лога функции
-       Если аргумент не указан - лог выводится в консоль '''
+    """Декоратор для логирования функции
+    Аргумент функции - путь для сохранения лога функции
+    Если аргумент не указан - лог выводится в консоль"""
+
     def decorator(func):
         def wrapper(*args, **kwargs):
             try:
@@ -27,4 +28,3 @@ def log(filename=None):
         return wrapper
 
     return decorator
-
