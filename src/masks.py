@@ -34,3 +34,7 @@ def mask_account(account: str) -> str:
         return result
     except Exception as e:
         logger.error(f'Ошибка при маскировке номера счета: {e}')
+
+
+
+
