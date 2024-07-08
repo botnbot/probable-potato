@@ -8,8 +8,10 @@ load_dotenv(".env")
 
 apikey = os.getenv("API_KEY")
 
+
 def convert_to_rub(transaction: dict) -> Any:
     '''Функция конвертация валюты транзакции в рубли'''
+
     amount = transaction["operationAmount"]["amount"]
     currency = transaction["operationAmount"]["currency"]["code"]
 
