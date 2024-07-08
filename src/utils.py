@@ -29,6 +29,7 @@ def json_to_list(path_to_file: str) -> List[Dict[str, Any]]:
             raise ValueError(f"Файл '{file_path}' содержит не список")
             transactions = []
         for item in data:
+
             if not isinstance(item, dict):
                 logger.error(f"Файл '{file_path}' содержит элементы, которые не являются словарями")
                 raise ValueError(f"Файл '{file_path}' содержит элементы, которые не являются словарями")

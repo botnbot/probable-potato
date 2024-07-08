@@ -37,4 +37,4 @@ def mask_account(account: str) -> str:
 
 
 
-
+print(mask_card_number('123456789456123'))
