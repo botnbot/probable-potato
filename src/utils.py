@@ -34,22 +34,55 @@ def file_to_list(path_to_file: str) -> List[Dict[str, Any]]:
             with open(file_path, encoding="utf-8") as f:
                 data = json.load(f)
             if not isinstance(data, list):
-                logger.error(f"JSON-фaйл '{file_path}' содержит не список")
-                raise ValueError(f"JSON-фaйл '{file_path}' содержит не список")
+                logger.error(f"JSON-файл '{file_path}' содержит не список")
+                raise ValueError(f"JSON-файл '{file_path}' содержит не список")
             for item in data:
                 if not isinstance(item, dict):
-                    logger.error(f"JSON-фaйл '{file_path}' содержит элементы, которые не являются словарями")
-                    raise ValueError(f"JSON-фaйл '{file_path}' содержит элементы, которые не являются словарями")
+                    logger.error(f"JSON-файл '{file_path}' содержит элементы, которые не являются словарями")
+                    raise ValueError(f"JSON-файл '{file_path}' содержит элементы, которые не являются словарями")
             transactions = data
 
         elif file_extension == ".xlsx":
             logger.info("Чтение XLSX-файла")
             excel_df = pd.read_excel(file_path)
+            # Добавление нового столбца operationAmount
+            excel_df["operationAmount"] = excel_df.apply(lambda row: {
+                "amount": row["amount"],
+                "currency": {
+                    "name": row["currency_name"],
+                    "code": row["currency_code"]
+                }
+            }, axis=1)
+
+            # Указание нового порядка столбцов
+            new_col_order = ["id", "state", "date", "operationAmount", "description", "from", "to"]
+
+            # Применение нового порядка столбцов
+            excel_df = excel_df[new_col_order]
+
+            # Преобразование DataFrame в список словарей
             transactions = excel_df.to_dict(orient="records")
 
         elif file_extension == ".csv":
             logger.info("Чтение CSV-файла")
-            csv_df = pd.read_csv(file_path)
+            csv_df = pd.read_csv(file_path, delimiter=';')
+
+            # Добавление нового столбца operationAmount
+            csv_df["operationAmount"] = csv_df.apply(lambda row: {
+                "amount": row["amount"],
+                "currency": {
+                    "name": row["currency_name"],
+                    "code": row["currency_code"]
+                }
+            }, axis=1)
+
+            # Указание нового порядка столбцов
+            new_col_order = ["id", "state", "date", "operationAmount", "description", "from", "to"]
+
+            # Применение нового порядка столбцов
+            csv_df = csv_df[new_col_order]
+
+            # Преобразование DataFrame в список словарей
             transactions = csv_df.to_dict(orient="records")
 
         else:
@@ -68,3 +101,5 @@ def file_to_list(path_to_file: str) -> List[Dict[str, Any]]:
 
     logger.info("Вывод результата")
     return transactions
+
+print(file_to_list('data/transactions_excel.xlsx'))
