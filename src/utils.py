@@ -46,13 +46,13 @@ def file_to_list(path_to_file: str) -> List[Dict[str, Any]]:
             logger.info("Чтение XLSX-файла")
             excel_df = pd.read_excel(file_path)
             # Добавление нового столбца operationAmount
-            excel_df["operationAmount"] = excel_df.apply(lambda row: {
-                "amount": row["amount"],
-                "currency": {
-                    "name": row["currency_name"],
-                    "code": row["currency_code"]
-                }
-            }, axis=1)
+            excel_df["operationAmount"] = excel_df.apply(
+                lambda row: {
+                    "amount": row["amount"],
+                    "currency": {"name": row["currency_name"], "code": row["currency_code"]},
+                },
+                axis=1,
+            )
 
             # Указание нового порядка столбцов
             new_col_order = ["id", "state", "date", "operationAmount", "description", "from", "to"]
@@ -65,16 +65,16 @@ def file_to_list(path_to_file: str) -> List[Dict[str, Any]]:
 
         elif file_extension == ".csv":
             logger.info("Чтение CSV-файла")
-            csv_df = pd.read_csv(file_path, delimiter=';')
+            csv_df = pd.read_csv(file_path, delimiter=";")
 
             # Добавление нового столбца operationAmount
-            csv_df["operationAmount"] = csv_df.apply(lambda row: {
-                "amount": row["amount"],
-                "currency": {
-                    "name": row["currency_name"],
-                    "code": row["currency_code"]
-                }
-            }, axis=1)
+            csv_df["operationAmount"] = csv_df.apply(
+                lambda row: {
+                    "amount": row["amount"],
+                    "currency": {"name": row["currency_name"], "code": row["currency_code"]},
+                },
+                axis=1,
+            )
 
             # Указание нового порядка столбцов
             new_col_order = ["id", "state", "date", "operationAmount", "description", "from", "to"]
@@ -102,4 +102,5 @@ def file_to_list(path_to_file: str) -> List[Dict[str, Any]]:
     logger.info("Вывод результата")
     return transactions
 
-print(file_to_list('data/transactions_excel.xlsx'))
+
+print(file_to_list("data/transactions_excel.xlsx"))
