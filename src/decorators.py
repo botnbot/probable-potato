@@ -1,5 +1,6 @@
-from src.config import ROOT_PATH
 from pathlib import Path
+
+from src.config import ROOT_PATH
 
 
 def log(filename=None):

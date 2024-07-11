@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Any
 
-from src.masks import mask_card_number, mask_account
+from src.masks import mask_account, mask_card_number
 
 
 def mask_account_card(string: str) -> Any:
