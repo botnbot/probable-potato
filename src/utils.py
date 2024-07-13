@@ -101,6 +101,3 @@ def file_to_list(path_to_file: str) -> List[Dict[str, Any]]:
 
     logger.info("Вывод результата")
     return transactions
-
-
-print(file_to_list("data/transactions_excel.xlsx"))
