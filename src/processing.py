@@ -1,12 +1,13 @@
 from typing import List, Any, Dict, Iterable
 import re
 
+
 def filter_by_currency(transactions: list, currency: str) -> List[dict]:
     """Функция которая выдает список транзакций, в которых указана заданная валюта."""
     filtered_by_currency = []
     for transaction in transactions:
         if transaction["operationAmount"]["currency"]["code"] == currency:
-             filtered_by_currency.append(transaction)
+            filtered_by_currency.append(transaction)
 
     return filtered_by_currency
 
@@ -20,11 +21,12 @@ def filter_by_state(list_of_operations: list[dict], state: str = "EXECUTED") -> 
 
     return filtered_by_state
 
+
 def search_string_in_transactions(transactions: List[Dict[str, Any]], string_to_find: str) -> List[Dict[str, Any]]:
-    '''Функция фильтрации транзакций по строке в описании'''
-    list_of_selected_transactions =[]
+    """Функция фильтрации транзакций по строке в описании"""
+    list_of_selected_transactions = []
     for transaction in transactions:
-        if re.search(string_to_find, transaction["description"],flags=re.IGNORECASE) :
+        if re.search(string_to_find, transaction["description"], flags=re.IGNORECASE):
             list_of_selected_transactions.append(transaction)
 
     return list_of_selected_transactions

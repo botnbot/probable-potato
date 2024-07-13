@@ -24,6 +24,7 @@ def mask_card_number(cardnumber: str) -> str:
 
     except Exception as e:
         logger.error(f"Ошибка при маскировке номера карты: {e}")
+        return ''
 
 
 def mask_account(account: str) -> str:
@@ -35,3 +36,4 @@ def mask_account(account: str) -> str:
         return result
     except Exception as e:
         logger.error(f"Ошибка при маскировке номера счета: {e}")
+        return ''
