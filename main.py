@@ -13,17 +13,17 @@ print(
 )
 
 menu = ""
-while menu not in (1, 2, 3):
-    menu = int(input("Введите номер "))
+while menu not in ('1', '2', '3'):
+    menu = input("Введите номер \n")
     if menu not in (1, 2, 3):
-        print("Некорректный ввод. Повторите \n")
-if menu == 1:
+        print("Некорректный ввод.Введите 1, 2, или 3. \n")
+if menu == '1':
     transactions = file_to_list("data/operations22.json")
     print("Для обработки выбран JSON-файл")
-elif menu == 2:
+elif menu == '2':
     transactions = file_to_list("data/transactions.csv")
     print("Для обработки выбран csv-файл")
-elif menu == 3:
+elif menu == '3':
     transactions = file_to_list("data/transactions_excel.xlsx")
     print("Для обработки выбран excel-файл")
 
@@ -91,7 +91,7 @@ else:
 
 print("Распечатываю итоговый список транзакций...")
 if filtered_by_string:
-    print(f"Всего {len(filtered_by_string)} операций в выборке")
+    print(f"Всего  операций в выборке: {len(filtered_by_string)}")
 
     for transaction in filtered_by_string:
         frm = (
