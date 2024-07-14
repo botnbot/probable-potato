@@ -15,7 +15,7 @@ def transaction_descriptions(transactions: list) -> Generator:
         yield transaction["description"]
 
 
-def filter_by_currency(transactions: list, currency: str) -> Generator:
+def filter_by_currency_once(transactions: list, currency: str) -> Generator:
     """Функция которая выдает по очереди операции, в которых указана заданная валюта."""
     for transaction in transactions:
         if transaction["operationAmount"]["currency"]["code"] == currency:

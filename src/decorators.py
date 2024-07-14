@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import Callable, Any
 
 from src.config import ROOT_PATH
 
@@ -8,8 +9,8 @@ def log(filename=None):
     Аргумент функции - путь для сохранения лога функции
     Если аргумент не указан - лог выводится в консоль"""
 
-    def decorator(func):
-        def wrapper(*args, **kwargs):
+    def decorator(func: Callable[..., Any]) -> Callable[..., Any]:
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
                 result = func(*args, **kwargs)
                 if filename:

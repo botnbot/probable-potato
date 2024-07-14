@@ -32,7 +32,7 @@ def test_convert_to_rub(mock_request, transaction_fix) -> Any:
 
     mock_response = {
         "success": True,
-        "query": {"from": "USD", "to": "RUB", "amount": 10},
+        "query": {"from": "USD", "to": "sort_for_rub", "amount": 10},
         "info": {"timestamp": 1720029425, "rate": 87.849598},
         "date": "2024-07-03",
         "result": 878.49598,
@@ -52,7 +52,7 @@ def test_convert_to_rub(mock_request, transaction_fix) -> Any:
 
 
 def convert_to_rub(transaction: dict) -> dict:
-    '''Тестируемая функция'''
+    """Тестируемая функция"""
     amount = transaction["operationAmount"]["amount"]
     currency = transaction["operationAmount"]["currency"]["code"]
 
